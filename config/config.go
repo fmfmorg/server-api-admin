@@ -34,6 +34,7 @@ var (
 	RedisPassword = os.Getenv("FM_REDIS_PASSWORD")
 	DBHost        = os.Getenv("FM_DB_HOST")
 	DBUsername    = os.Getenv("FM_DB_USERNAME")
+	DBPassword    = os.Getenv("FM_DB_PASSWORD")
 	DBName        = os.Getenv("FM_DB_NAME")
 	DBPort        = os.Getenv("FM_DB_PORT")
 	DBSslMode     = os.Getenv("FM_DB_SSL_MODE") // "require" or "disable"
@@ -47,9 +48,6 @@ var (
 
 	HighPriorityEmailQueue = "high_priority_email_queue"
 	LowPriorityEmailQueue  = "low_priority_email_queue"
-
-	ImageDestProtocol = "file://"
-	ImageDestDir      = "/Users/cindyho/fairymade/system_v2/test_images"
 )
 
 // GetMemberDiscountRate returns the appropriate discount rate based on the accumulated value

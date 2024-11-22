@@ -3,8 +3,6 @@ package products
 import (
 	"encoding/json"
 	"net/http"
-	"path/filepath"
-	"server-api-admin/config"
 	"server-api-admin/util/postgresdb"
 
 	"github.com/julienschmidt/httprouter"
@@ -84,8 +82,6 @@ func products(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
 			return
 		}
 
-		p.AdminImageURL = config.ImageDestProtocol + filepath.Join(config.ImageDestDir, "admin", p.ProductID, p.AdminImageURL)
-		p.ProductImageURL = config.ImageDestProtocol + filepath.Join(config.ImageDestDir, "public", p.ProductID, p.ProductImageURL)
 		products = append(products, p)
 	}
 	if err := rows.Err(); err != nil {
