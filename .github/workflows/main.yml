@@ -1,0 +1,34 @@
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.23'
+
+    - name: Build
+      run: go build -v ./...
+      env:
+        FM_REDIS_ADDRESS: ${{ env.FM_REDIS_ADDRESS }}
+        FM_REDIS_PASSWORD: ${{ secrets.FM_REDIS_PASSWORD }}
+        FM_DB_HOST: ${{ env.FM_DB_HOST }}
+        FM_DB_USERNAME: ${{ env.FM_DB_USERNAME }}
+        FM_DB_PASSWORD: ${{ secrets.FM_DB_PASSWORD }}
+        FM_DB_NAME: ${{ env.FM_DB_NAME }}
+        FM_DB_PORT: ${{ env.FM_DB_PORT }}
+        FM_DB_SSL_MODE: ${{ env.FM_DB_SSL_MODE }}
+        FM_ADMIN_API_PORT: ${{ env.FM_ADMIN_API_PORT }}
+        FM_USER_PASSWORD_PEPPER: ${{ env.FM_USER_PASSWORD_PEPPER }}
+        FM_SESSION_ID_SECRET_KEY: ${{ env.FM_SESSION_ID_SECRET_KEY }}
+        FM_REDIS_CACHE_CART_PREFIX: ${{ env.FM_REDIS_CACHE_CART_PREFIX }}
+        FM_REDIS_CACHE_PRODUCT_PREFIX: ${{ env.FM_REDIS_CACHE_PRODUCT_PREFIX }}
