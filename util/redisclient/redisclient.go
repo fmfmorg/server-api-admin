@@ -2,6 +2,7 @@ package redisclient
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"log"
 	"server-api-admin/config"
@@ -28,6 +29,9 @@ func init() {
 		ReadTimeout:  30 * time.Second,     // Read timeout
 		WriteTimeout: 30 * time.Second,     // Write timeout
 		MaxRetries:   3,
+		TLSConfig: &tls.Config{
+			InsecureSkipVerify: config.IsProduction,
+		},
 	})
 
 	// Ping Redis to check the connection

@@ -46,6 +46,8 @@ var (
 	RedisCachePrefixCart    = os.Getenv("FM_REDIS_CACHE_CART_PREFIX")
 	RedisCachePrefixProduct = os.Getenv("FM_REDIS_CACHE_PRODUCT_PREFIX")
 
+	IsProduction = os.Getenv("FM_ENV_MODE") == "production"
+
 	HighPriorityEmailQueue = "high_priority_email_queue"
 	LowPriorityEmailQueue  = "low_priority_email_queue"
 )
